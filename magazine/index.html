@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How the G.O.A.T feels</title>
+  <style>
+    :root {
+      --bg: #12110e;
+      --page: #1f1c17;
+      --paper: #e8dcc1;
+      --text: #efe7d3;
+      --dark: #151410;
+      --accent: #ffc94c;
+      --accent2: #a8ffa0;
+      --accent3: #ff6fa3;
+      --muted: #c2b69d;
+      --shadow: rgba(0, 0, 0, 0.35);
+      font-family: "Courier New", Courier, "Lucida Console", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(255, 201, 76, 0.12), transparent 12%),
+        radial-gradient(circle at 80% 20%, rgba(255, 111, 163, 0.12), transparent 15%),
+        linear-gradient(180deg, #1b1813 0%, #12110e 50%, #181613 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .page {
+      position: relative;
+      max-width: 1140px;
+      margin: auto;
+      padding: 48px 28px 88px;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 20%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 30px 80px var(--shadow);
+      overflow: hidden;
+    }
+
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+      transform: rotate(-18deg);
+    }
+
+    .page::before {
+      width: 140px;
+      height: 80px;
+      border-radius: 18px;
+      top: 26px;
+      right: 26px;
+      background: linear-gradient(135deg, rgba(255, 193, 79, 0.65), rgba(255, 255, 255, 0.05));
+    }
+
+    .page::after {
+      width: 200px;
+      height: 110px;
+      border-radius: 24px;
+      bottom: 40px;
+      left: 20px;
+      background: linear-gradient(135deg, rgba(255, 111, 163, 0.45), rgba(255, 255, 255, 0.04));
+    }
+
+    .hero {
+      display: grid;
+      gap: 22px;
+      align-items: stretch;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 1fr);
+      margin-bottom: 42px;
+    }
+
+    .hero__panel {
+      position: relative;
+      background: linear-gradient(200deg, #2f2b24 0%, #221f19 100%);
+      padding: 42px 40px 48px;
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 24px 70px var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero__panel::before,
+    .hero__panel::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .hero__panel::before {
+      width: 120px;
+      height: 120px;
+      top: -40px;
+      right: -40px;
+      background: rgba(255, 111, 163, 0.16);
+      border-radius: 50%;
+    }
+
+    .hero__panel::after {
+      width: 260px;
+      height: 260px;
+      bottom: -100px;
+      left: -80px;
+      background: rgba(255, 201, 76, 0.1);
+      border-radius: 50%;
+    }
+
+    .hero__title {
+      font-size: clamp(3rem, 5vw, 5rem);
+      margin: 0 0 16px;
+      letter-spacing: -0.1em;
+      line-height: 0.92;
+      color: var(--accent);
+      text-transform: uppercase;
+      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero__subtitle {
+      max-width: 44rem;
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.22);
+    }
+
+    .hero__meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .hero__meta span {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+    }
+
+    .hero__card {
+      position: relative;
+      background: #2b2620;
+      color: #f0e2c9;
+      padding: 32px 28px;
+      border-radius: 32px;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .hero__card::before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      right: 16px;
+      width: 125px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      transform: rotate(12deg);
+      border-radius: 6px;
+    }
+
+    .hero__card::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 12px;
+      width: 90px;
+      height: 14px;
+      background: rgba(255, 201, 76, 0.6);
+      transform: rotate(-8deg);
+      border-radius: 6px;
+    }
+
+    .hero__card h3 {
+      margin: 0 0 14px;
+      font-size: 1.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero__card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .story {
+      position: relative;
+      background: #2d2923;
+      padding: 32px;
+      border-radius: 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .story::before,
+    .story::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .story::before {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 111, 163, 0.1);
+      top: -50px;
+      right: -40px;
+      transform: rotate(18deg);
+    }
+
+    .story::after {
+      width: 12px;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.08);
+      top: 26px;
+      left: -12px;
+      transform: rotate(-16deg);
+    }
+
+    .story h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .story p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--accent3);
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .photo-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+
+    .photo {
+      position: relative;
+      border-radius: 18px;
+      background: #312d26;
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+      color: #d4c7aa;
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 20px;
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .photo::before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 20px;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-6deg);
+      background: rgba(255, 193, 79, 0.35);
+      border-radius: 6px;
+    }
+
+    .photo:nth-child(odd) {
+      background: #2b271f;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .note {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px dashed rgba(255, 111, 163, 0.26);
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .note::before,
+    .note::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.08);
+      width: 26px;
+      height: 8px;
+      border-radius: 4px;
+    }
+
+    .note::before {
+      top: -8px;
+      left: 18px;
+      transform: rotate(-12deg);
+    }
+
+    .note::after {
+      bottom: -8px;
+      right: 18px;
+      transform: rotate(12deg);
+    }
+
+    .callout {
+      margin-top: 18px;
+      padding: 18px 22px;
+      border-left: 4px solid var(--accent2);
+      background: rgba(168, 255, 160, 0.08);
+      color: #f6f0dd;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .footer {
+      margin-top: 54px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 860px) {
+      .page {
+        padding: 32px 20px 64px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 32px;
+      }
+
+      .hero__panel {
+        padding: 32px 28px;
+      }
+
+      .hero__title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+      }
+
+      .hero__subtitle {
+        font-size: 1rem;
+      }
+
+      .hero__meta {
+        font-size: 0.9rem;
+      }
+
+      .hero__meta span {
+        padding: 8px 12px;
+      }
+
+      .hero__card {
+        padding: 24px 20px;
+      }
+
+      .grid {
+        gap: 20px;
+      }
+
+      .story {
+        padding: 24px;
+      }
+
+      .story h2 {
+        font-size: 1.5rem;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .photo {
+        min-height: 140px;
+        padding: 16px;
+      }
+
+      .note {
+        padding: 18px;
+      }
+
+      .callout {
+        padding: 16px 20px;
+      }
+
+      .footer {
+        margin-top: 40px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .page {
+        max-width: 1400px;
+      }
+
+      .hero__title {
+        font-size: clamp(4rem, 6vw, 6rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero__panel">
+        <p class="tagline">Drum roll please..</p>
+        <h1 class="hero__title">Guide to how a real nigga thinks</h1>
+        <p class="hero__subtitle">This is made for Konke to read whenever she feels like her and her gremlin have had a small misunderstanding. May confuse you more on the first read but you'll get it eventually.</p>
+        <div class="hero__meta">
+          <span>Editor: Masu</span>
+          <span>Designer: Masu</span>
+        </div>
+      </div>
+      <aside class="hero__card">
+        <h3>Should you read this?</h3>
+        <p>Most probably yes, you should read it in times of doubt and confusion. I am not sure how this will help but I hope it will provide you with some answers.</p>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <article class="story">
+        <p class="tagline">The mind of Masu</p>
+        <h2>The way Masu thinks</h2>
+        <p>Masu never wants to fight, escpecially with his nigga Konke. He may do some wrong here and there but never with the initial thought of upsetting Konke. Konke is like Masu's mirror, and Masu feels very exposed which is something a new and uncomfortable for Masu.(ooou, thats a bar) </p>
+      </article>
+
+      <article class="story">
+        <p class="tagline">Who is Konke?</p>
+        <h2>A person of great importance</h2>
+        <p>Konke is a significant figure in Masu's life, although not perfect (closer to perfect than Masu could ever be) is an important part of his world. She's an absolute angel, a real nigga. Misunderstandings with Konke show Masu how much he values their relationship and make him realize how much he still needs to work on the way he speaks to people.</p>
+        <div class="callout">fun fact: Konke might actually be the queengoatbigmama.</div>
+      </article>
+
+      <article class="story">
+        <p class="tagline">Rambling on</p>
+        <p class="note">Masu and Konke may not know each other as well as they think they do. </p>
+        <p>That is why they should probably learn to communicate better, communicate their feelings, communicate their thoughts and maybe their understanding of each other may improve. Konke may choose to accept Masu's two cents or not, but that's all that I would have liked to say. </p>
+      </article>
+
+      <article class="story">
+        <h2>You da best, I'm da best, We da best Music!!</h2>
+        <p>Masu loves Konke and cares about her deeply, the guy hopes the feelings are mutual really. Masu has come to realize that maybe Konke's way of showing love may be very different from his and accepts that if Konke is able to make him understand her different ways.</p>
+        <div class="photo-grid">
+          <div class="photo">
+            <img src="53fb42c1-5c2a-458b-9256-4484dc6fd951.jpg" alt="Photo 1">
+          </div>
+          <div class="photo">
+            <img src="ef5f001c-b893-4a9e-82eb-63157d3465f8.JPG" alt="Photo 2">
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      Crafted with care by Masu. Thank you if have made it this far, I hope you enjoyed the read and maybe even found some value in it. If you have any questions or just want to chat, call me or text me or email me.
+    </footer>
+  </main>
+</body>
+</html>
